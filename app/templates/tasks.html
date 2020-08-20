@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body%}
+  <h1>ATTENDANCE</h1>
+  <ul>
+    {% for attendance in attendances %}
+      <li>{{ attendance }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/add"> SIGN YOUR ATTENDANCE HERE</a>
+{% endblock%}
