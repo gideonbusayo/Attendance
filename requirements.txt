@@ -1,3 +1,7 @@
+python-binance
+TA-Lib
+numpy
+websocket_client
 click==7.1.2
 Flask==1.1.2
 gunicorn==20.0.4
