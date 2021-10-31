@@ -1,5 +1,4 @@
 python-binance
-TA-Lib
 numpy
 websocket_client
 click==7.1.2
