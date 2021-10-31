@@ -3,22 +3,26 @@ from flask import Flask, redirect, render_template, request
 # Intriducing Binance TradeBot for MANA USDT pair
 
 import websocket, json, pprint, talib, numpy
-import config
+# from config import *
 from binance.client import Client
 from binance.enums import *
+
+API_KEY = '2mUdcLnuagMAUE76eK9CoRFx6RUYDi3seHAU0wxERPoikFNqKrMbdJBxWFT3N5QN'
+API_SECRET = 'ja2rkx1M2NCkENElqRHEDvKqkPqhiXOSE8aDhVXCSjtHS2ALAUDoaKTVOIJgMVsn'
+
 
 SOCKET = "wss://stream.binance.com:9443/ws/manausdt@kline_1m"
 
 RSI_PERIOD = 14
 RSI_OVERBOUGHT = 70
 RSI_OVERSOLD = 30
-TRADE_SYMBOL = 'MANAUSD'
+TRADE_SYMBOL = 'MANAUSDT'
 TRADE_QUANTITY = 500
 
 closes = []
 in_position = False
 
-client = Client(config.API_KEY, config.API_SECRET)
+client = Client(API_KEY, API_SECRET)
 
 def order(side, quantity, symbol,order_type=ORDER_TYPE_MARKET):
     try:
@@ -31,7 +35,9 @@ def order(side, quantity, symbol,order_type=ORDER_TYPE_MARKET):
 
     return True
 
-    
+attendances = []
+attendanced = []
+   
 def on_open(ws):
     print('opened connection')
 
@@ -41,8 +47,7 @@ def on_close(ws):
 def on_message(ws, message):
     global closes, in_position
     
-    attendances = []
-    attendanced = []
+
     
     print('received message')
     json_message = json.loads(message)
