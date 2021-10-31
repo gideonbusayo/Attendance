@@ -102,7 +102,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def attendance():
-    return render_template ("tasks.html", attendances=attendances, attendanced=attendanced)
+    l = [attendances, attendanced]
+    return render_template ("tasks.html", l=l)
+
 
 @app.route("/add", methods = ["GET", "POST"])
 def add():
