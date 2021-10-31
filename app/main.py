@@ -7,6 +7,10 @@ import websocket, json, pprint, talib, numpy
 from binance.client import Client
 from binance.enums import *
 
+gunicorn_logger = logging.getLogger('gunicorn.error')
+app.logger.handlers = gunicorn_logger.handlers
+app.logger.setLevel(gunicorn_logger.level)
+
 API_KEY = '2mUdcLnuagMAUE76eK9CoRFx6RUYDi3seHAU0wxERPoikFNqKrMbdJBxWFT3N5QN'
 API_SECRET = 'ja2rkx1M2NCkENElqRHEDvKqkPqhiXOSE8aDhVXCSjtHS2ALAUDoaKTVOIJgMVsn'
 
@@ -48,7 +52,7 @@ def on_message(ws, message):
     global closes, in_position
     
 
-    
+    app.logger.info('received message')
     print('received message')
     json_message = json.loads(message)
     pprint.pprint(json_message)
@@ -68,6 +72,8 @@ def on_message(ws, message):
             np_closes = numpy.array(closes)
             rsi = talib.RSI(np_closes, RSI_PERIOD)
             print("all rsis calculated so far")
+            app.logger.info(rsi)
+            
             print(rsi)
             last_rsi = rsi[-1]
             print("the current rsi is {}".format(last_rsi))
