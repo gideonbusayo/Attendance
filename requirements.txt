@@ -1,3 +1,4 @@
+pip==9.0.3
 python-binance
 numpy
 websocket_client
