@@ -21,7 +21,7 @@ RSI_PERIOD = 14
 RSI_OVERBOUGHT = 70
 RSI_OVERSOLD = 30
 TRADE_SYMBOL = 'MANAUSDT'
-TRADE_QUANTITY = 300
+TRADE_QUANTITY = 500
 
 closes = []
 in_position = False
@@ -113,15 +113,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def attendance():
-    l = [attendances, attendanced]
+    #l = [attendances, attendanced]
+    l = "Welcome"
     return render_template ("tasks.html", l=l)
 
-
-@app.route("/add", methods = ["GET", "POST"])
-def add():
-    if request.method == "GET":
-        return render_template ("add.html")
-    else:
-        todo = request.form.get("task")
-        attendances.append(todo)
-        return redirect("/")
