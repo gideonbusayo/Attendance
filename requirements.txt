@@ -1,3 +1,4 @@
+TA-Lib
 python-binance
 numpy
 websocket_client
