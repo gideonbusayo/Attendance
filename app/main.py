@@ -11,8 +11,8 @@ from flask import Flask, redirect, render_template, request
 # app.logger.handlers = gunicorn_logger.handlers
 # app.logger.setLevel(gunicorn_logger.level)
 
-# API_KEY = '2mUdcLnuagMAUE76eK9CoRFx6RUYDi3seHAU0wxERPoikFNqKrMbdJBxWFT3N5QN'
-# API_SECRET = 'ja2rkx1M2NCkENElqRHEDvKqkPqhiXOSE8aDhVXCSjtHS2ALAUDoaKTVOIJgMVsn'
+# API_KEY = ''
+# API_SECRET = ''
 
 
 # SOCKET = "wss://stream.binance.com:9443/ws/manausdt@kline_1m"
